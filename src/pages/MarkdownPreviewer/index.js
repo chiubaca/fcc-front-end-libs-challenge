@@ -1,9 +1,10 @@
 import React from 'react';
+import './MarkdownPreviewer.scss'
 
 export default function RandomQuoteMachine() {
   return (
-    <main >
-      Hello!
+    <main id="markdown-previewer">
+      <div>WIP!🏗️</div>
     </main>
   );
 }

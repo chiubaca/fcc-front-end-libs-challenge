@@ -1,9 +1,10 @@
 import React from 'react';
+import './Calculator.scss'
 
 export default function RandomQuoteMachine() {
   return (
-    <main >
-      Hello!
+    <main id="calculator">
+      <div>WIP!🏗️ </div>
     </main>
   );
 }
