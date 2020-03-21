@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function RandomQuoteMachine() {
   return (
-    <div >
+    <main id="quote-box">
       Hello!
-    </div>
+    </main>
   );
 }

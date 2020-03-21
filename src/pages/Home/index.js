@@ -4,7 +4,7 @@ import './Home.css';
 
 export default function Home() {
   return (
-    <div className="App">
+    <main className="home">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,6 +19,6 @@ export default function Home() {
           Learn React
         </a>
       </header>
-    </div>
+    </main>
   );
 }

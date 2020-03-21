@@ -21,6 +21,26 @@ function App() {
 function Nav() {
   return (
     <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/random-quote-machine">
+          <RandomQuoteMachine />
+        </Route>
+        <Route path="/markdown-previewer">
+          <MarkdownPreviewer />
+        </Route>
+        <Route path="/drum-machine">
+          <DrumMachine />
+        </Route>
+        <Route path="/js-calculator">
+          <Calculator />
+        </Route>
+        <Route path="/pomodoro-clock">
+          <PomodoroClock />
+        </Route>
+      </Switch>
       <nav>
         <ul>
           <li>
@@ -43,27 +63,6 @@ function Nav() {
           </li>
         </ul>
       </nav>
-
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/random-quote-machine">
-          <RandomQuoteMachine />
-        </Route>
-        <Route path="/markdown-previewer">
-          <MarkdownPreviewer />
-        </Route>
-        <Route path="/drum-machine">
-          <DrumMachine />
-        </Route>
-        <Route path="/js-calculator">
-          <Calculator />
-        </Route>
-        <Route path="/pomodoro-clock">
-          <PomodoroClock />
-        </Route>
-      </Switch>
     </Router >
   );
 }
