@@ -21,6 +21,9 @@ class RandomQuoteMachine extends React.Component {
           allQuotes: data.quotes
         })
       })
+      .then(() => {
+        this.getRandomQuote()
+      })
   }
 
   getRandomQuote() {
