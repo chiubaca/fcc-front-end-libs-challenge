@@ -45,13 +45,15 @@ class RandomQuoteMachine extends React.Component {
           - <span id="author">{this.state.newQuote.author}</span>
         </div>
         <div id="buttons-container">
-          <button className="button" id="tweet-quote" title="Tweet this quote!" target="_blank">
-            Tweet this quote!
-          </button>
+          <a id="tweet-quote"
+            href={`https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text="${this.state.newQuote.quote}" -${this.state.newQuote.author}`}
+          >
+            Tweet this quote
+          </a>
           <button className="button" id="new-quote" onClick={this.getRandomQuote}>New quote</button>
         </div>
       </div>
-    </main>
+    </main >
   }
 }
 
