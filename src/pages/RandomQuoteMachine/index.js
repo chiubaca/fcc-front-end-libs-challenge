@@ -30,9 +30,9 @@ class RandomQuoteMachine extends React.Component {
           - <span id="author">{/* inject author here */}Temp Author</span>
         </div>
         <div id="buttons-container">
-          <a className="button" id="tweet-quote" title="Tweet this quote!" target="_blank">
+          <button className="button" id="tweet-quote" title="Tweet this quote!" target="_blank">
             Tweet this quote!
-          </a>
+          </button>
           <button className="button" id="new-quote">New quote</button>
         </div>
       </div>
