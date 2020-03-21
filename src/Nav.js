@@ -12,38 +12,29 @@ import {
   Link
 } from "react-router-dom";
 
-function App() {
-  return (
-    <Nav />
-  );
-}
-
-function Nav() {
+export default function Nav() {
   return (
     <Router>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/random-quote-machine">Random Quote Machine</Link>
-          </li>
-          <li>
-            <Link to="/markdown-previewer">Markdown Previewer</Link>
-          </li>
-          <li>
-            <Link to="/drum-machine">Drum Machine</Link>
-          </li>
-          <li>
-            <Link to="/js-calculator">JS Calculator</Link>
-          </li>
-          <li>
-            <Link to="/pomodoro-clock">Pomodoro Clock</Link>
-          </li>
-        </ul>
-      </nav>
-
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/random-quote-machine">Random Quote Machine</Link>
+        </li>
+        <li>
+          <Link to="/markdown-previewer">Markdown Previewer</Link>
+        </li>
+        <li>
+          <Link to="/drum-machine">Drum Machine</Link>
+        </li>
+        <li>
+          <Link to="/js-calculator">JS Calculator</Link>
+        </li>
+        <li>
+          <Link to="/pomodoro-clock">Pomodoro Clock</Link>
+        </li>
+      </ul>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -67,5 +58,3 @@ function Nav() {
     </Router >
   );
 }
-
-export default App;
