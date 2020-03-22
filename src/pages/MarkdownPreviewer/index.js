@@ -18,7 +18,7 @@ class MarkdownPreviewer extends React.Component {
 
   render() {
     return <main id="markdown-previewer">
-      <Editor handleChange={this.handleChange} />
+      <Editor handleChange={this.handleChange} content={this.state.content} />
       <Preview content={this.state.content} />
     </main>
   }
@@ -28,7 +28,7 @@ function Editor(props) {
   return (
     <div id="editor-container">
       <div>Editor</div>
-      <textarea name="" id="editor" onChange={props.handleChange}></textarea>
+      <textarea id="editor" value={props.content} type="text" onChange={props.handleChange}></textarea>
     </div>
   )
 }
