@@ -1,11 +1,39 @@
 #markdown-previewer{
-  div{
-    background-color: #282c34;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
+  resize: horizontal;
+  display:flex;
+  flex-direction: column;
+  background: #282c34;
+  color: white;
+}
+
+#editor-container{
+  text-align: center;
+  box-sizing: border-box;
+
+  textarea{
+    background: #f4f4f4;
+    width:80%;
+    height:30vh;
+    border-radius:15px;
+    padding: 10px
+  }
+}
+
+#preview-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height:100%;
+    border-top: 3px solid grey;
+
+  #preview{
+    background:#f4f4f4;
+    width:80%;
+    height:30vh;
+    border-radius:15px;
+    padding: 10px;
+    resize: both;
+    overflow: auto
   }
 }
