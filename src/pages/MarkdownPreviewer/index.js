@@ -1,5 +1,8 @@
 import React from 'react';
+import marked from 'marked'
 import './MarkdownPreviewer.scss'
+
+  ;
 
 class MarkdownPreviewer extends React.Component {
   constructor(props) {
@@ -33,11 +36,12 @@ function Editor(props) {
 }
 
 function Preview(props) {
+
   return (
     <div id="preview-container">
       <div>Preview</div>
-      <div id="preview">
-        {props.content}
+      <div id="preview" >
+        {marked(props.content, { sanitize: true })}
       </div>
     </div>
   )
