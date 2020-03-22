@@ -1,31 +1,47 @@
 import React from 'react';
 import './MarkdownPreviewer.scss'
 
-export default function RandomQuoteMachine() {
-  return (
-    <main id="markdown-previewer">
-      <Editor />
-      <Preview />
+class MarkdownPreviewer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      content: ""
+    };
+  }
+
+  handleChange(event) {
+    console.log("this is working!", event.target.value)
+    this.setState({ content: event.target.value });
+  }
+
+  render() {
+    return <main id="markdown-previewer">
+      <Editor handleChange={this.handleChange} />
+      <Preview content={this.state.content} />
     </main>
-  );
+  }
 }
 
-function Editor() {
+function Editor(props) {
   return (
     <div id="editor-container">
       <div>Editor</div>
-      <textarea name="" id="editor" ></textarea>
+      <textarea name="" id="editor" onChange={props.handleChange}></textarea>
     </div>
   )
 }
 
-function Preview() {
+function Preview(props) {
   return (
     <div id="preview-container">
       <div>Preview</div>
       <div id="preview">
+        {props.content}
       </div>
     </div>
   )
 
 }
+
+export default MarkdownPreviewer
