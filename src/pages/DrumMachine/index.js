@@ -4,44 +4,46 @@ import "./DrumMachine.scss";
 class DrumMachine extends React.Component {
   constructor(props) {
     super(props);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
-  componentDidMount() {
-    document.addEventListener("keydown", this.handleKeyPress, false);
-  }
   handleKeyPress(e) {
-    switch (e.keyCode) {
-      case 81:
+    // console.log("key press!", e.charCode);
+    switch (e.charCode) {
+      case 113:
         console.log("q");
+        console.log(this.qButton);
+        this.qButton.click();
         break;
-      case 87:
+      case 119:
         console.log("w");
         break;
-      case 69:
+      case 101:
         console.log("e");
         break;
-      case 65:
+      case 97:
         console.log("a");
         break;
-      case 83:
+      case 115:
         console.log("s");
         break;
-      case 68:
+      case 100:
         console.log("d");
         break;
-      case 90:
+      case 122:
         console.log("z");
         break;
-      case 88:
+      case 120:
         console.log("x");
         break;
-      case 67:
+      case 99:
         console.log("c");
         break;
       default:
         break;
     }
   }
+
   render() {
     return (
       <main>
@@ -50,34 +52,65 @@ class DrumMachine extends React.Component {
             <button
               id="Q"
               className="drum-pad"
-              ref={(input) => {
-                this.display = input;
-              }}
+              onKeyPress={this.handleKeyPress}
+              ref={input => this.qButton = input}
             >
               Q
             </button>
-            <button id="W" className="drum-pad">
+            <button
+              id="W"
+              className="drum-pad"
+              onKeyPress={this.handleKeyPress}
+            >
               W
             </button>
-            <button id="E" className="drum-pad">
+            <button
+              id="E"
+              className="drum-pad"
+              onKeyPress={this.handleKeyPress}
+            >
               E
             </button>
-            <button id="A" className="drum-pad">
+            <button
+              id="A"
+              className="drum-pad"
+              onKeyPress={this.handleKeyPress}
+            >
               A
             </button>
-            <button id="S" className="drum-pad">
+            <button
+              id="S"
+              className="drum-pad"
+              onKeyPress={this.handleKeyPress}
+            >
               S
             </button>
-            <button id="D" className="drum-pad">
+            <button
+              id="D"
+              className="drum-pad"
+              onKeyPress={this.handleKeyPress}
+            >
               D
             </button>
-            <button id="Z" className="drum-pad">
+            <button
+              id="Z"
+              className="drum-pad"
+              onKeyPress={this.handleKeyPress}
+            >
               Z
             </button>
-            <button id="X" className="drum-pad">
+            <button
+              id="X"
+              className="drum-pad"
+              onKeyPress={this.handleKeyPress}
+            >
               X
             </button>
-            <button id="C" className="drum-pad">
+            <button
+              id="C"
+              className="drum-pad"
+              onKeyPress={this.handleKeyPress}
+            >
               C
             </button>
           </div>
