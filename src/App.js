@@ -1,21 +1,15 @@
-import React from 'react';
-import Home from './pages/Home'
-import RandomQuoteMachine from './pages/RandomQuoteMachine'
-import MarkdownPreviewer from './pages/MarkdownPreviewer'
-import DrumMachine from './pages/DrumMachine'
-import Calculator from './pages/Calculator'
-import PomodoroClock from './pages/PomodoroClock'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React from "react";
+import Home from "./pages/Home";
+import RandomQuoteMachine from "./pages/RandomQuoteMachine";
+import MarkdownPreviewer from "./pages/MarkdownPreviewer";
+import DrumMachine from "./pages/DrumMachine";
+import Calculator from "./pages/Calculator";
+import PomodoroClock from "./pages/PomodoroClock";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
-  return (
-    <Nav />
-  );
+  return <Nav />;
 }
 
 function Nav() {
@@ -63,7 +57,7 @@ function Nav() {
           </li>
         </ul>
       </nav>
-    </Router >
+    </Router>
   );
 }
 
