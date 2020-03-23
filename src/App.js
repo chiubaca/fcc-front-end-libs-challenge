@@ -5,7 +5,7 @@ import MarkdownPreviewer from "./pages/MarkdownPreviewer";
 import DrumMachine from "./pages/DrumMachine";
 import Calculator from "./pages/Calculator";
 import PomodoroClock from "./pages/PomodoroClock";
-import GithubCorner from "./GithubCorner";
+import GithubCorner from "./components/GithubCorner";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -16,7 +16,9 @@ function App() {
 function Nav() {
   return (
     <>
-      <GithubCorner />
+      <GithubCorner
+        url={"https://github.com/chiubaca/fcc-front-end-libs-challenge"}
+      />
       <Router>
         <Switch>
           <Route exact path="/">
