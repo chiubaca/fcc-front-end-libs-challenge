@@ -1,39 +1,39 @@
-#markdown-previewer{
+#markdown-previewer {
   resize: horizontal;
-  display:flex;
+  display: flex;
   flex-direction: column;
   background: #282c34;
   // color: white;
 }
 
-#editor-container{
+#editor-container {
   text-align: center;
   box-sizing: border-box;
 
-  textarea{
+  textarea {
     background: #f4f4f4;
-    width:80%;
-    height:30vh;
-    border-radius:15px;
-    padding: 10px
+    width: 80%;
+    height: 30vh;
+    border-radius: 15px;
+    padding: 10px;
   }
 }
 
-#preview-container{
-  display:flex;
+#preview-container {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height:100%;
-    border-top: 3px solid grey;
+  height: 100%;
+  border-top: 3px solid grey;
 
-  #preview{
-    background:#f4f4f4;
-    width:80%;
-    height:30vh;
-    border-radius:15px;
+  #preview {
+    background: #f4f4f4;
+    width: 80%;
+    height: 30vh;
+    border-radius: 15px;
     padding: 10px;
     resize: both;
-    overflow: auto
+    overflow: auto;
   }
 }
