@@ -5,6 +5,8 @@ export default function GithubCorner(props) {
   return (
     <a
       href={props.url}
+      target="_blank"
+      rel="noopener noreferrer"
       class="github-corner"
       aria-label="View source on GitHub"
     >
