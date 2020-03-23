@@ -44,6 +44,10 @@ div#root {
         padding: 1rem;
         color: #fff;
       }
+
+      li:hover {
+        box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.75);
+      }
     }
   }
 
