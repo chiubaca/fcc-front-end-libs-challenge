@@ -2,6 +2,10 @@ import React from "react";
 import marked from "marked";
 import "./MarkdownPreviewer.scss";
 
+marked.setOptions({
+  breaks: true,
+});
+
 class MarkdownPreviewer extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +45,9 @@ function Editor(props) {
 
 function Preview(props) {
   function createMarkup() {
-    return { __html: marked(props.content) };
+    return {
+      __html: marked(props.content),
+    };
   }
 
   return (
