@@ -1,26 +1,27 @@
-import React from 'react';
-import marked from 'marked';
-import './MarkdownPreviewer.scss';
+import React from "react";
+import marked from "marked";
+import "./MarkdownPreviewer.scss";
 
 class MarkdownPreviewer extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.state = {
-      content: placeholderText
+      content: placeholderText,
     };
   }
 
   handleChange(event) {
-    console.log("this is working!", event.target.value)
     this.setState({ content: event.target.value });
   }
 
   render() {
-    return <main id="markdown-previewer">
-      <Editor handleChange={this.handleChange} content={this.state.content} />
-      <Preview content={this.state.content} />
-    </main>
+    return (
+      <main id="markdown-previewer">
+        <Editor handleChange={this.handleChange} content={this.state.content} />
+        <Preview content={this.state.content} />
+      </main>
+    );
   }
 }
 
@@ -28,30 +29,32 @@ function Editor(props) {
   return (
     <div id="editor-container">
       <div>Editor</div>
-      <textarea id="editor" value={props.content} type="text" onChange={props.handleChange}></textarea>
+      <textarea
+        id="editor"
+        value={props.content}
+        type="text"
+        onChange={props.handleChange}
+      ></textarea>
     </div>
-  )
+  );
 }
 
 function Preview(props) {
-
   function createMarkup() {
-    return { __html: marked(props.content) }
+    return { __html: marked(props.content) };
   }
 
   return (
     <div id="preview-container">
       <div>Preview</div>
-      <div id="preview" dangerouslySetInnerHTML={createMarkup()}>
-      </div>
+      <div id="preview" dangerouslySetInnerHTML={createMarkup()}></div>
     </div>
-  )
+  );
 }
 
-export default MarkdownPreviewer
+export default MarkdownPreviewer;
 
-const placeholderText =
-  `# Welcome to my React Markdown Previewer!
+const placeholderText = `# Welcome to my React Markdown Previewer!
 
 ## This is a sub-heading...
 ### And here's some other cool stuff:
@@ -96,4 +99,4 @@ And here. | Okay. | I think we get it.
 * And last but not least, let's not forget embedded images:
 
 ![React Logo w/ Text](https://goo.gl/Umyytc)
-`
+`;
