@@ -9,36 +9,40 @@ class DrumMachine extends React.Component {
 
   keyPressLookup = {
     113: {
-      key: "q",
+      id: "Q",
       handleKeyPress: this.handleKeyPress,
       clip: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3",
     },
     119: {
-      key: "w",
+      id: "W",
       handleKeyPress: this.handleKeyPress,
     },
     101: {
-      key: "e",
+      id: "E",
+      handleKeyPress: this.handleKeyPress,
+    },
+    97: {
+      id: "A",
       handleKeyPress: this.handleKeyPress,
     },
     115: {
-      key: "a",
+      id: "S",
       handleKeyPress: this.handleKeyPress,
     },
     100: {
-      key: "s",
+      id: "D",
       handleKeyPress: this.handleKeyPress,
     },
     122: {
-      key: "z",
+      id: "Z",
       handleKeyPress: this.handleKeyPress,
     },
     120: {
-      key: "x",
+      id: "X",
       handleKeyPress: this.handleKeyPress,
     },
     99: {
-      key: "c",
+      id: "C",
       handleKeyPress: this.handleKeyPress,
     },
   };
@@ -47,7 +51,7 @@ class DrumMachine extends React.Component {
   // if so pass in the relvant args to perform an action within its selc contained object
   lookupKeyPress(e) {
     if (this.keyPressLookup[e.charCode]) {
-      let key = this.keyPressLookup[e.charCode].key;
+      let key = this.keyPressLookup[e.charCode].id;
       this.keyPressLookup[e.charCode].handleKeyPress(key);
     }
   }
@@ -55,6 +59,8 @@ class DrumMachine extends React.Component {
   //key press handler used in keyPressLookup object
   handleKeyPress(keyPressed) {
     console.log(`Pressed ${keyPressed}`);
+    const sound = document.getElementById(keyPressed);
+    sound.play();
   }
 
   render() {
@@ -62,60 +68,41 @@ class DrumMachine extends React.Component {
       <main>
         <div id="drum-machine">
           <div id="display">
-            <button
-              id="Q"
-              className="drum-pad"
-              onKeyPress={this.lookupKeyPress}
-
-            >
-              Q
-              <audio
-                className="clip"
-                src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
-              ></audio>
-            </button>
-            <button
-              id="W"
-              className="drum-pad"
-              onKeyPress={this.lookupKeyPress}
-            >
-              W
-            </button>
-            <button
-              id="E"
-              className="drum-pad"
-              onKeyPress={this.lookupKeyPress}
-            >
-              E
-            </button>
-            <button
-              id="A"
-              className="drum-pad"
-              onKeyPress={this.lookupKeyPress}
-            >
-              A
-            </button>
-            <button
-              id="S"
-              className="drum-pad"
-              onKeyPress={this.lookupKeyPress}
-            >
-              S
-            </button>
-            <button
-              id="D"
-              className="drum-pad"
-              onKeyPress={this.lookupKeyPress}
-            >
-              D
-            </button>
-            <button
-              id="Z"
-              className="drum-pad"
-              onKeyPress={this.lookupKeyPress}
-            >
-              Z
-            </button>
+            <DrumPad
+              keyPress={this.lookupKeyPress}
+              id={this.keyPressLookup[113].id}
+              soundClip={this.keyPressLookup[113].clip}
+            />
+            <DrumPad
+              keyPress={this.lookupKeyPress}
+              id={this.keyPressLookup[119].id}
+              soundClip={this.keyPressLookup[119].clip}
+            />
+            <DrumPad
+              keyPress={this.lookupKeyPress}
+              id={this.keyPressLookup[101].id}
+              soundClip={this.keyPressLookup[101].clip}
+            />
+            <DrumPad
+              keyPress={this.lookupKeyPress}
+              id={this.keyPressLookup[97].id}
+              soundClip={this.keyPressLookup[97].clip}
+            />
+            <DrumPad
+              keyPress={this.lookupKeyPress}
+              id={this.keyPressLookup[115].id}
+              soundClip={this.keyPressLookup[115].clip}
+            />
+            <DrumPad
+              keyPress={this.lookupKeyPress}
+              id={this.keyPressLookup[100].id}
+              soundClip={this.keyPressLookup[100].clip}
+            />
+            <DrumPad
+              keyPress={this.lookupKeyPress}
+              id={this.keyPressLookup[122].id}
+              soundClip={this.keyPressLookup[122].clip}
+            />
             <button
               id="X"
               className="drum-pad"
@@ -135,6 +122,19 @@ class DrumMachine extends React.Component {
       </main>
     );
   }
+}
+
+function DrumPad(props) {
+  return (
+    <button
+      className="drum-pad"
+      onKeyPress={props.keyPress}
+      onClick={props.keyPress}
+    >
+      <audio id={props.id} className="clip" src={props.soundClip}></audio>
+      {props.id}
+    </button>
+  );
 }
 
 export default DrumMachine;
