@@ -68,6 +68,15 @@ class DrumMachine extends React.Component {
     },
   };
 
+  // TODO: Bring focus on the button on initialisation
+  componentDidMount() {
+    this.focus();
+  }
+
+  focus() {
+    document.getElementById("S").focus();
+  }
+
   // Checks to see if the key pressed is something we have assigend an action to in the keyPressLookup object
   // if so pass in the relvant args to perform an action within its selc contained object
   lookupKeyPress(e) {
@@ -99,7 +108,7 @@ class DrumMachine extends React.Component {
 
   render() {
     return (
-      <main>
+      <main onClick={this.focus}>
         <div id="drum-machine">
           <div id="display">{this.state.display}</div>
           <div id="drum-pads-container">
@@ -187,7 +196,9 @@ function DrumPad(props) {
         className="clip"
         data-clip-name={props.name}
         src={props.soundClip}
-      ></audio>
+      >
+        {props.id}
+      </audio>
       {props.id}
     </button>
   );
