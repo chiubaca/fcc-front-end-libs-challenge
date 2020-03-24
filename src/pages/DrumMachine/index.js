@@ -4,44 +4,56 @@ import "./DrumMachine.scss";
 class DrumMachine extends React.Component {
   constructor(props) {
     super(props);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.lookupKeyPress = this.lookupKeyPress.bind(this);
   }
 
-  handleKeyPress(e) {
-    // console.log("key press!", e.charCode);
-    switch (e.charCode) {
-      case 113:
-        console.log("q");
-        console.log(this.qButton);
-        this.qButton.click();
-        break;
-      case 119:
-        console.log("w");
-        break;
-      case 101:
-        console.log("e");
-        break;
-      case 97:
-        console.log("a");
-        break;
-      case 115:
-        console.log("s");
-        break;
-      case 100:
-        console.log("d");
-        break;
-      case 122:
-        console.log("z");
-        break;
-      case 120:
-        console.log("x");
-        break;
-      case 99:
-        console.log("c");
-        break;
-      default:
-        break;
+  keyPressLookup = {
+    113: {
+      key: "q",
+      whatKey: this.handleKeyPress,
+    },
+    119: {
+      key: "w",
+      whatKey: this.handleKeyPress,
+    },
+    101: {
+      key: "e",
+      whatKey: this.handleKeyPress,
+    },
+    115: {
+      key: "a",
+      whatKey: this.handleKeyPress,
+    },
+    100: {
+      key: "s",
+      whatKey: this.handleKeyPress,
+    },
+    122: {
+      key: "z",
+      whatKey: this.handleKeyPress,
+    },
+    120: {
+      key: "x",
+      whatKey: this.handleKeyPress,
+    },
+    99: {
+      key: "c",
+      whatKey: this.handleKeyPress,
+    },
+  };
+
+  // Checks to see if the key pressed is something we have assigend an action to in the keyPressLookup object
+  // if so pass in the relvant args to perform an action within its selc contained object
+  lookupKeyPress(e) {
+    if (this.keyPressLookup[e.charCode]) {
+      let key = this.keyPressLookup[e.charCode].key;
+      this.keyPressLookup[e.charCode].whatKey(key);
     }
+  }
+
+  //key press handler used in keyPressLookup object
+  handleKeyPress(keyPressed) {
+    console.log(`Pressed ${keyPressed}`);
   }
 
   render() {
@@ -52,64 +64,64 @@ class DrumMachine extends React.Component {
             <button
               id="Q"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
-              ref={input => this.qButton = input}
+              onKeyPress={this.lookupKeyPress}
+              ref={(input) => (this.qButton = input)}
             >
               Q
             </button>
             <button
               id="W"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
+              onKeyPress={this.lookupKeyPress}
             >
               W
             </button>
             <button
               id="E"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
+              onKeyPress={this.lookupKeyPress}
             >
               E
             </button>
             <button
               id="A"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
+              onKeyPress={this.lookupKeyPress}
             >
               A
             </button>
             <button
               id="S"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
+              onKeyPress={this.lookupKeyPress}
             >
               S
             </button>
             <button
               id="D"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
+              onKeyPress={this.lookupKeyPress}
             >
               D
             </button>
             <button
               id="Z"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
+              onKeyPress={this.lookupKeyPress}
             >
               Z
             </button>
             <button
               id="X"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
+              onKeyPress={this.lookupKeyPress}
             >
               X
             </button>
             <button
               id="C"
               className="drum-pad"
-              onKeyPress={this.handleKeyPress}
+              onKeyPress={this.lookupKeyPress}
             >
               C
             </button>
