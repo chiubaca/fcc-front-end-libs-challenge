@@ -104,5 +104,5 @@ And here. | Okay. | I think we get it.
 - Even if you use dashes or asterisks.
 * And last but not least, let's not forget embedded images:
 
-![React Logo w/ Text](https://goo.gl/Umyytc)
+![React Logo w/ Text](https://media1.giphy.com/media/Hcw7rjsIsHcmk/giphy.gif?cid=790b7611efd8fbf12d971f57f48a020902d69b19084315b4&rid=giphy.gif)
 `;
