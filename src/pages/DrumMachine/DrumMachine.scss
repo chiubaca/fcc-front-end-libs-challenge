@@ -8,6 +8,15 @@ main {
   color: white;
 
   #drum-machine {
+    #display {
+      border: white;
+      border-style: solid;
+      padding: 10px;
+      margin: 0 0 10px 0;
+      border-radius: 15px;
+      text-align: center;
+    }
+
     #drum-pads-container {
       display: grid;
       grid-column-gap: 20px;
