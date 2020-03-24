@@ -10,35 +10,36 @@ class DrumMachine extends React.Component {
   keyPressLookup = {
     113: {
       key: "q",
-      whatKey: this.handleKeyPress,
+      handleKeyPress: this.handleKeyPress,
+      clip: "https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3",
     },
     119: {
       key: "w",
-      whatKey: this.handleKeyPress,
+      handleKeyPress: this.handleKeyPress,
     },
     101: {
       key: "e",
-      whatKey: this.handleKeyPress,
+      handleKeyPress: this.handleKeyPress,
     },
     115: {
       key: "a",
-      whatKey: this.handleKeyPress,
+      handleKeyPress: this.handleKeyPress,
     },
     100: {
       key: "s",
-      whatKey: this.handleKeyPress,
+      handleKeyPress: this.handleKeyPress,
     },
     122: {
       key: "z",
-      whatKey: this.handleKeyPress,
+      handleKeyPress: this.handleKeyPress,
     },
     120: {
       key: "x",
-      whatKey: this.handleKeyPress,
+      handleKeyPress: this.handleKeyPress,
     },
     99: {
       key: "c",
-      whatKey: this.handleKeyPress,
+      handleKeyPress: this.handleKeyPress,
     },
   };
 
@@ -47,7 +48,7 @@ class DrumMachine extends React.Component {
   lookupKeyPress(e) {
     if (this.keyPressLookup[e.charCode]) {
       let key = this.keyPressLookup[e.charCode].key;
-      this.keyPressLookup[e.charCode].whatKey(key);
+      this.keyPressLookup[e.charCode].handleKeyPress(key);
     }
   }
 
@@ -65,9 +66,13 @@ class DrumMachine extends React.Component {
               id="Q"
               className="drum-pad"
               onKeyPress={this.lookupKeyPress}
-              ref={(input) => (this.qButton = input)}
+
             >
               Q
+              <audio
+                className="clip"
+                src="https://s3.amazonaws.com/freecodecamp/drums/Heater-2.mp3"
+              ></audio>
             </button>
             <button
               id="W"
