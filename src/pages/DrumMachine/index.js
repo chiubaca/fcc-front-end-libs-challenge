@@ -4,7 +4,11 @@ import "./DrumMachine.scss";
 class DrumMachine extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      display: "Hit me!",
+    };
     this.lookupKeyPress = this.lookupKeyPress.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   keyPressLookup = {
@@ -81,53 +85,81 @@ class DrumMachine extends React.Component {
     sound.play();
   }
 
+  handleClick(e) {
+    console.log(e.target.childNodes[0].attributes["data-clip-name"].value);
+    const nameOfSound =
+      e.target.childNodes[0].attributes["data-clip-name"].value;
+    const sound = e.target.childNodes[0]
+    sound.play();
+    this.setState({ display: nameOfSound })
+  }
+
   render() {
     return (
       <main>
         <div id="drum-machine">
-          <div id="display">
+          <div id="display">{this.state.display}</div>
+          <div id="drum-pads-container">
             <DrumPad
+              name={this.keyPressLookup[113].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[113].id}
               soundClip={this.keyPressLookup[113].url}
             />
             <DrumPad
+              name={this.keyPressLookup[119].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[119].id}
               soundClip={this.keyPressLookup[119].url}
             />
             <DrumPad
+              name={this.keyPressLookup[101].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[101].id}
               soundClip={this.keyPressLookup[101].url}
             />
             <DrumPad
+              name={this.keyPressLookup[97].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[97].id}
               soundClip={this.keyPressLookup[97].url}
             />
             <DrumPad
+              name={this.keyPressLookup[115].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[115].id}
               soundClip={this.keyPressLookup[115].url}
             />
             <DrumPad
+              name={this.keyPressLookup[100].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[100].id}
               soundClip={this.keyPressLookup[100].url}
             />
             <DrumPad
+              name={this.keyPressLookup[122].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[122].id}
               soundClip={this.keyPressLookup[122].url}
             />
             <DrumPad
+              name={this.keyPressLookup[120].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[120].id}
               soundClip={this.keyPressLookup[120].url}
             />
 
             <DrumPad
+              name={this.keyPressLookup[120].name}
+              click={this.handleClick}
               keyPress={this.lookupKeyPress}
               id={this.keyPressLookup[99].id}
               soundClip={this.keyPressLookup[99].url}
@@ -145,9 +177,14 @@ function DrumPad(props) {
       id={props.id}
       className="drum-pad"
       onKeyPress={props.keyPress}
-      onClick={props.keyPress}
+      onClick={props.click}
     >
-      <audio id={props.id} className="clip" src={props.soundClip}></audio>
+      <audio
+        id={props.id}
+        className="clip"
+        data-clip-name={props.name}
+        src={props.soundClip}
+      ></audio>
       {props.id}
     </button>
   );
