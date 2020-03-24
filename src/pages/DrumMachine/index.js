@@ -74,6 +74,9 @@ class DrumMachine extends React.Component {
     if (this.keyPressLookup[e.charCode]) {
       let key = this.keyPressLookup[e.charCode].id;
       this.keyPressLookup[e.charCode].handleKeyPress(key);
+
+      // set the display name here, wanted to put this in the handleKeyPress, but it doenst have access to react state.
+      this.setState({ display: this.keyPressLookup[e.charCode].name });
     }
   }
 
@@ -87,11 +90,11 @@ class DrumMachine extends React.Component {
 
   handleClick(e) {
     console.log(e.target.childNodes[0].attributes["data-clip-name"].value);
-    const nameOfSound =
-      e.target.childNodes[0].attributes["data-clip-name"].value;
-    const sound = e.target.childNodes[0]
+
+    const sound = e.target.childNodes[0];
+    const soundName = e.target.childNodes[0].attributes["data-clip-name"].value;
     sound.play();
-    this.setState({ display: nameOfSound })
+    this.setState({ display: soundName });
   }
 
   render() {
