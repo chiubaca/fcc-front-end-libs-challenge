@@ -12,55 +12,55 @@ class DrumMachine extends React.Component {
   }
 
   keyPressLookup = {
-    113: {
+    Q: {
       id: "Q",
       handleKeyPress: this.handleKeyPress,
       name: "Chord-1",
       url: "https://s3.amazonaws.com/freecodecamp/drums/Chord_1.mp3",
     },
-    119: {
+    W: {
       id: "W",
       handleKeyPress: this.handleKeyPress,
       name: "Chord-2",
       url: "https://s3.amazonaws.com/freecodecamp/drums/Chord_2.mp3",
     },
-    101: {
+    E: {
       id: "E",
       handleKeyPress: this.handleKeyPress,
       name: "Chord-3",
       url: "https://s3.amazonaws.com/freecodecamp/drums/Chord_3.mp3",
     },
-    97: {
+    A: {
       id: "A",
       handleKeyPress: this.handleKeyPress,
       name: "Shaker",
       url: "https://s3.amazonaws.com/freecodecamp/drums/Give_us_a_light.mp3",
     },
-    115: {
+    S: {
       id: "S",
       handleKeyPress: this.handleKeyPress,
       name: "Open-HH",
       url: "https://s3.amazonaws.com/freecodecamp/drums/Dry_Ohh.mp3",
     },
-    100: {
+    D: {
       id: "D",
       handleKeyPress: this.handleKeyPress,
       name: "Closed-HH",
       url: "https://s3.amazonaws.com/freecodecamp/drums/Bld_H1.mp3",
     },
-    122: {
+    Z: {
       id: "Z",
       handleKeyPress: this.handleKeyPress,
       name: "Punchy-Kick",
       url: "https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3",
     },
-    120: {
+    X: {
       id: "X",
       handleKeyPress: this.handleKeyPress,
       name: "Side-Stick",
       url: "https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3",
     },
-    99: {
+    C: {
       id: "C",
       handleKeyPress: this.handleKeyPress,
       name: "Snare",
@@ -74,18 +74,20 @@ class DrumMachine extends React.Component {
   }
 
   focus() {
-    document.getElementById("S").focus();
+    document.getElementById("Q").focus();
   }
 
   // Checks to see if the key pressed is something we have assigend an action to in the keyPressLookup object
   // if so pass in the relvant args to perform an action within its selc contained object
   lookupKeyPress(e) {
-    if (this.keyPressLookup[e.charCode]) {
-      let key = this.keyPressLookup[e.charCode].id;
-      this.keyPressLookup[e.charCode].handleKeyPress(key);
+    const key = e.key.toUpperCase();
+
+    // const key = this.keyPressLookup[e.key].toUpperCase()
+    if (this.keyPressLookup[key]) {
+      this.keyPressLookup[key].handleKeyPress(key);
 
       // set the display name here, wanted to put this in the handleKeyPress, but it doenst have access to react state.
-      this.setState({ display: this.keyPressLookup[e.charCode].name });
+      this.setState({ display: this.keyPressLookup[key].name });
     }
   }
 
@@ -113,68 +115,68 @@ class DrumMachine extends React.Component {
           <div id="display">{this.state.display}</div>
           <div id="drum-pads-container">
             <DrumPad
-              name={this.keyPressLookup[113].name}
+              name={this.keyPressLookup["Q"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[113].id}
-              soundClip={this.keyPressLookup[113].url}
+              id={this.keyPressLookup["Q"].id}
+              soundClip={this.keyPressLookup["Q"].url}
             />
             <DrumPad
-              name={this.keyPressLookup[119].name}
+              name={this.keyPressLookup["W"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[119].id}
-              soundClip={this.keyPressLookup[119].url}
+              id={this.keyPressLookup["W"].id}
+              soundClip={this.keyPressLookup["W"].url}
             />
             <DrumPad
-              name={this.keyPressLookup[101].name}
+              name={this.keyPressLookup["E"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[101].id}
-              soundClip={this.keyPressLookup[101].url}
+              id={this.keyPressLookup["E"].id}
+              soundClip={this.keyPressLookup["E"].url}
             />
             <DrumPad
-              name={this.keyPressLookup[97].name}
+              name={this.keyPressLookup["A"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[97].id}
-              soundClip={this.keyPressLookup[97].url}
+              id={this.keyPressLookup["A"].id}
+              soundClip={this.keyPressLookup["A"].url}
             />
             <DrumPad
-              name={this.keyPressLookup[115].name}
+              name={this.keyPressLookup["S"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[115].id}
-              soundClip={this.keyPressLookup[115].url}
+              id={this.keyPressLookup["S"].id}
+              soundClip={this.keyPressLookup["S"].url}
             />
             <DrumPad
-              name={this.keyPressLookup[100].name}
+              name={this.keyPressLookup["D"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[100].id}
-              soundClip={this.keyPressLookup[100].url}
+              id={this.keyPressLookup["D"].id}
+              soundClip={this.keyPressLookup["D"].url}
             />
             <DrumPad
-              name={this.keyPressLookup[122].name}
+              name={this.keyPressLookup["Z"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[122].id}
-              soundClip={this.keyPressLookup[122].url}
+              id={this.keyPressLookup["Z"].id}
+              soundClip={this.keyPressLookup["Z"].url}
             />
             <DrumPad
-              name={this.keyPressLookup[120].name}
+              name={this.keyPressLookup["X"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[120].id}
-              soundClip={this.keyPressLookup[120].url}
+              id={this.keyPressLookup["X"].id}
+              soundClip={this.keyPressLookup["X"].url}
             />
 
             <DrumPad
-              name={this.keyPressLookup[120].name}
+              name={this.keyPressLookup["C"].name}
               click={this.handleClick}
               keyPress={this.lookupKeyPress}
-              id={this.keyPressLookup[99].id}
-              soundClip={this.keyPressLookup[99].url}
+              id={this.keyPressLookup["C"].id}
+              soundClip={this.keyPressLookup["C"].url}
             />
           </div>
         </div>
@@ -188,7 +190,7 @@ function DrumPad(props) {
     <button
       id={props.id}
       className="drum-pad"
-      onKeyPress={props.keyPress}
+      onKeyDown={props.keyPress}
       onClick={props.click}
     >
       <audio
