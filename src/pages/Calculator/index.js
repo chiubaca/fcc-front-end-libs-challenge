@@ -10,8 +10,9 @@ class Calculator extends React.Component {
     return (
       <main id="calculator">
         <div id="calculator-container">
+          <div id="display"></div>
           <div id="number-container">
-            <Number id="nine" value={9} /> <Number id="eigth" value={8} />
+            <Number id="nine" value={9} /> <Number id="eight" value={8} />
             <Number id="seven" value={7} />
             <Number id="six" value={6} /> <Number id="five" value={5} />
             <Number id="four" value={4} />
@@ -25,6 +26,7 @@ class Calculator extends React.Component {
             <Function id="subtract" value="-" />
             <Function id="multiply" value="*" />
             <Function id="divide" value="/" />
+            <Function id="equals" value="=" />
           </div>
         </div>
       </main>
