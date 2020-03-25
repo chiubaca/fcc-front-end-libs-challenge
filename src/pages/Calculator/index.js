@@ -5,6 +5,7 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.numberHandler = this.numberHandler.bind(this);
+    this.functionHandler = this.functionHandler.bind(this);
     this.clearHandler = this.clearHandler.bind(this);
     this.state = {
       inputA: "",
@@ -17,7 +18,14 @@ class Calculator extends React.Component {
     const value = e.target.textContent;
     this.setState({
       inputA: this.state.inputA + value,
-      state: ""
+    });
+  }
+
+  functionHandler(e) {
+    const value = e.target.textContent;
+    console.log(value)
+    this.setState({
+      function: value,
     });
   }
 
@@ -59,11 +67,11 @@ class Calculator extends React.Component {
             </div>
             <div id="function-container">
               <button id="clear" onClick={this.clearHandler}>C</button>
-              <Function id="add" value="+" />
-              <Function id="subtract" value="-" />
-              <Function id="multiply" value="*" />
-              <Function id="divide" value="/" />
-              <Function id="equals" value="=" />
+              <Function clickHandler={this.functionHandler} id="add" value="+" />
+              <Function clickHandler={this.functionHandler} id="subtract" value="-" />
+              <Function clickHandler={this.functionHandler} id="multiply" value="*" />
+              <Function clickHandler={this.functionHandler} id="divide" value="/" />
+              <Function clickHandler={this.functionHandler} id="equals" value="=" />
             </div>
           </div>
         </div>
@@ -82,7 +90,7 @@ function Number(props) {
 
 function Function(props) {
   return (
-    <button id={props.id} value={props.value}>
+    <button onClick={props.clickHandler} id={props.id} value={props.value}>
       {props.value}
     </button>
   );
