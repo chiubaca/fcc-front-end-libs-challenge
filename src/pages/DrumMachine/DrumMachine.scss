@@ -36,6 +36,20 @@ main {
         "Q W E"
         "A S D"
         "Z X C";
+
+      // button css overide
+      button.drum-pad {
+        background: blue;
+        transition:
+          background 0ms ease-in-out,
+          transform 150ms ease;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      button.active.drum-pad {
+        background: #dfdf3b;
+      }
     }
   }
 }

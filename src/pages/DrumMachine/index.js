@@ -64,9 +64,10 @@ class DrumMachine extends React.Component {
     // element.classList.add("active");
     const button = document.getElementById(keyPressed);
     button.classList.add("active");
-    console.log(button);
-    button.classList.remove("active");
-    console.log(button);
+
+    setTimeout(() => {
+      button.classList.remove("active");
+    }, 200);
   }
 
   // Checks to see if the key pressed is something we have assigend an action to in the keyPressLookup object
