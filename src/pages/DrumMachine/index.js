@@ -60,8 +60,11 @@ class DrumMachine extends React.Component {
     document.getElementById("Q").focus();
   }
 
+  /**
+   *
+   * @param {String} keyPressed - id of element
+   */
   showActiveDrumPad(keyPressed) {
-    // element.classList.add("active");
     const button = document.getElementById(keyPressed);
     button.classList.add("active");
 
@@ -83,7 +86,6 @@ class DrumMachine extends React.Component {
 
   //key press handler used in keyPressLookup object
   emitSound(keyPressed) {
-    console.log(`Pressed ${keyPressed}`);
     //the audio tag should be always be direct child of the button element
     const sound = document.getElementById(keyPressed).childNodes[0];
     sound.play();
@@ -92,7 +94,8 @@ class DrumMachine extends React.Component {
   handleClick(e) {
     const sound = e.target.childNodes[0];
     const soundName = e.target.childNodes[0].attributes["data-clip-name"].value;
-    sound.play();
+    sound.play(e.target.childNodes[0].attributes["id"].value);
+    this.showActiveDrumPad(e.target.childNodes[0].attributes["id"].value);
     this.setState({ display: soundName });
   }
 
