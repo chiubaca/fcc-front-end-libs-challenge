@@ -7,6 +7,7 @@ class Calculator extends React.Component {
     this.numberHandler = this.numberHandler.bind(this);
     this.functionHandler = this.functionHandler.bind(this);
     this.clearHandler = this.clearHandler.bind(this);
+    this.calculateHandler = this.calculateHandler.bind(this);
     this.state = {
       inputA: "",
       inputB: "",
@@ -16,14 +17,20 @@ class Calculator extends React.Component {
 
   numberHandler(e) {
     const value = e.target.textContent;
-    this.setState({
-      inputA: this.state.inputA + value,
-    });
+
+    if (this.state.function === "") {
+      this.setState({
+        inputA: this.state.inputA + value,
+      });
+    } else {
+      this.setState({
+        inputB: this.state.inputB + value,
+      });
+    }
   }
 
   functionHandler(e) {
     const value = e.target.textContent;
-    console.log(value)
     this.setState({
       function: value,
     });
@@ -34,7 +41,44 @@ class Calculator extends React.Component {
       inputA: "",
       inputB: "",
       function: "",
-    })
+    });
+  }
+
+  calculateHandler() {
+    switch (this.state.function) {
+      case "+":
+        console.log("add it", this.state.inputA);
+        this.setState({
+          inputA: parseInt(this.state.inputA) + parseInt(this.state.inputB),
+          inputB: "",
+          function: "",
+        });
+        break;
+      case "-":
+        this.setState({
+          inputA: parseInt(this.state.inputA) - parseInt(this.state.inputB),
+          inputB: "",
+          function: "",
+        });
+        break;
+      case "/":
+        this.setState({
+          inputA: parseInt(this.state.inputA) / parseInt(this.state.inputB),
+          inputB: "",
+          function: "",
+        });
+        break;
+      case "*":
+        this.setState({
+          inputA: parseInt(this.state.inputA) * parseInt(this.state.inputB),
+          inputB: "",
+          function: "",
+        });
+        break;
+      default:
+        console.log("Invalid!");
+        break;
+    }
   }
 
   render() {
@@ -66,12 +110,34 @@ class Calculator extends React.Component {
               <Number id="zero" value={0} clickHandler={this.numberHandler} />
             </div>
             <div id="function-container">
-              <button id="clear" onClick={this.clearHandler}>C</button>
-              <Function clickHandler={this.functionHandler} id="add" value="+" />
-              <Function clickHandler={this.functionHandler} id="subtract" value="-" />
-              <Function clickHandler={this.functionHandler} id="multiply" value="*" />
-              <Function clickHandler={this.functionHandler} id="divide" value="/" />
-              <Function clickHandler={this.functionHandler} id="equals" value="=" />
+              <button id="clear" onClick={this.clearHandler}>
+                C
+              </button>
+              <Function
+                clickHandler={this.functionHandler}
+                id="add"
+                value="+"
+              />
+              <Function
+                clickHandler={this.functionHandler}
+                id="subtract"
+                value="-"
+              />
+              <Function
+                clickHandler={this.functionHandler}
+                id="multiply"
+                value="*"
+              />
+              <Function
+                clickHandler={this.functionHandler}
+                id="divide"
+                value="/"
+              />
+              <Function
+                clickHandler={this.calculateHandler}
+                id="equals"
+                value="="
+              />
             </div>
           </div>
         </div>
