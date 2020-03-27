@@ -47,7 +47,6 @@ class Calculator extends React.Component {
   calculateHandler() {
     switch (this.state.function) {
       case "+":
-        console.log("add it", this.state.inputA);
         this.setState({
           inputA: parseInt(this.state.inputA) + parseInt(this.state.inputB),
           inputB: "",
