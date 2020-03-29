@@ -23,14 +23,14 @@ export default class PomodoroClock extends React.Component {
   incrementValHandler(e) {
     const timerToIncrement = e.target.attributes["data-type"].value;
     if (timerToIncrement === "break") {
-      if (this.state.breakLen === 60) {
+      if (this.state.breakLen === 60 || this.state.timerState === "STARTED") {
         return;
       }
       this.setState({
         breakLen: this.state.breakLen + 1,
       });
     } else if (timerToIncrement === "session") {
-      if (this.state.sessionLen === 60) {
+      if (this.state.sessionLen === 60 || this.state.timerState === "STARTED") {
         return;
       }
       this.setState({
@@ -42,14 +42,14 @@ export default class PomodoroClock extends React.Component {
   decrementValHandler(e) {
     const timerToDecrement = e.target.attributes["data-type"].value;
     if (timerToDecrement === "break") {
-      if (this.state.breakLen === 1) {
+      if (this.state.breakLen === 1 || this.state.timerState === "STARTED") {
         return;
       }
       this.setState({
         breakLen: this.state.breakLen - 1,
       });
     } else if (timerToDecrement === "session") {
-      if (this.state.sessionLen === 1) {
+      if (this.state.sessionLen === 1 || this.state.timerState === "STARTED") {
         return;
       }
       this.setState({
