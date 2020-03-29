@@ -7,6 +7,7 @@ export default class PomodoroClock extends React.Component {
     super(props);
     this.incrementValHandler = this.incrementValHandler.bind(this);
     this.decrementValHandler = this.decrementValHandler.bind(this);
+    this.resetHandler = this.resetHandler.bind(this);
     this.state = {
       sessionLen: 25,
       breakLen: 5,
@@ -15,12 +16,17 @@ export default class PomodoroClock extends React.Component {
 
   incrementValHandler(e) {
     const timerToIncrement = e.target.attributes["data-type"].value;
-    console.log(timerToIncrement);
     if (timerToIncrement === "break") {
+      if (this.state.breakLen === 60) {
+        return;
+      }
       this.setState({
         breakLen: this.state.breakLen + 1,
       });
     } else if (timerToIncrement === "session") {
+      if (this.state.sessionLen === 60) {
+        return;
+      }
       this.setState({
         sessionLen: this.state.sessionLen + 1,
       });
@@ -29,18 +35,29 @@ export default class PomodoroClock extends React.Component {
 
   decrementValHandler(e) {
     const timerToDecrement = e.target.attributes["data-type"].value;
-    console.log(timerToDecrement);
     if (timerToDecrement === "break") {
+      if (this.state.breakLen === 1) {
+        return;
+      }
       this.setState({
         breakLen: this.state.breakLen - 1,
       });
     } else if (timerToDecrement === "session") {
+      if (this.state.sessionLen === 1) {
+        return;
+      }
       this.setState({
         sessionLen: this.state.sessionLen - 1,
       });
     }
   }
 
+  resetHandler() {
+    this.setState({
+      sessionLen: 25,
+      breakLen: 5,
+    });
+  }
   render() {
     return (
       <main id="pomodoro-clock">
@@ -67,15 +84,9 @@ export default class PomodoroClock extends React.Component {
         </div>
 
         <div id="pomodoro-controls">
-          <button id="start_stop">
-            <span role="img" aria-label="start-pause">
-              ⏯️
-            </span>
-          </button>
-          <button id="reset">
-            <span role="img" aria-label="start-pause">
-              🔁
-            </span>
+          <button id="start_stop">⏯️</button>
+          <button id="reset" onClick={this.resetHandler}>
+            🔁
           </button>
         </div>
       </main>
